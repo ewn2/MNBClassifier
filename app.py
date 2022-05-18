@@ -7,7 +7,7 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 import gunicorn
-
+import sklearn
 
 warnings.filterwarnings('ignore')
 app = Flask(__name__)
