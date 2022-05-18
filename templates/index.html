@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS SPAM or HAM?</title>
+    <link href="../static/singlePageTemplate.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <section class="hero" id="hero">
+        <h2 class="hero_header" style="text-align: center;">IS THIS SMS SPAM OR HAM?!</h2>
+        <p class="tagline" style="text-align: center;">Machine Learning Natural Language Classifier</p>
+        <div class="main">
+            <div style="text-align: center;">
+                <form action="/finalize1" method="POST">
+                    <br>
+                    <textarea id="message" class="form-control" name="message"
+                              placeholder="Enter SMS Message to test here!" rows="10" cols="50"></textarea>
+                    <br>
+                    <br>
+                    <input type="submit" class="btn-info" value="Could this be SPAM?">
+                    <br>
+                </form>
+            </div>
+
+            <div style="text-align: center;">
+                <form action="/finalize2" method="post">
+                    <br>
+                    <input type="submit" class="btn-info" value="Show me an Example Prediction!">
+                    <br>
+                    <p>Example messages are not reviewed and may contain profanity,<br>illegitimate links/postal addresses/phone numbers, or other material the user may find unsuitable</p>
+                </form>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <br>
+            <br>
+            <h4>Erwin Uppal</h4>
+            <h5>
+                Classifier for identifying SMS messages as SPAM or not (HAM)
+                <br>
+            </h5>
+            <h5>
+                This tool is in no way guaranteed to be accurate!<br>User maintains culpability for all risks regardless
+                of received prediction
+            </h5>
+        </div>
+    </section>
+</div>
+</body>
+</html>

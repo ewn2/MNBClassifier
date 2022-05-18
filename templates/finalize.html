@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS SPAM or HAM?</title>
+    <link href="../static/singlePageTemplate.css" rel="stylesheet">
+</head>
+<body>
+</nav>
+<section>
+    <div style="text-align: center;">
+        <div class="side">
+            <h2>IS THIS SMS SPAM OR HAM?!</h2>
+            <p class="tagline" style="text-align: center;">Machine Learning Natural Language Classifier</p>
+        </div>
+        <div class="vl"></div>
+        <div class="main">
+            <table class="table" rows="10" cols="50" , style="margin-left: auto; margin-right: auto">
+                <tr>
+                    <th scope="col">Message to check</th>
+                </tr>
+                <tr scope='row'>
+                    <td>{{msg}}</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <form action="/predict" method="POST">
+                <input type="submit" class="btn-info" value="What do you think?">
+            </form>
+            <br>
+            <br>
+            <h4>Erwin Uppal</h4>
+            <h5>
+                Classifier for identifying SPAM SMS messages
+                <br>
+            </h5>
+            <h5>
+                This tool is in no way guaranteed to be accurate!<br>User maintains culpability for all risks regardless
+                of received prediction
+            </h5>
+            <form action="/" method="POST">
+                <input type="submit" class="btn-info" value="Back">
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>
