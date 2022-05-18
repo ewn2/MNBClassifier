@@ -12,7 +12,6 @@ import sklearn
 warnings.filterwarnings('ignore')
 app = Flask(__name__)
 app.secret_key = 'My_Secret_Key'
-PYTHON_VERSION = 3.10
 
 
 @app.route('/', methods=['GET', 'POST'])
