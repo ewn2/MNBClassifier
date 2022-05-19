@@ -24,11 +24,12 @@
                 </tr>
             </table>
             {% if prediction == 1%}
-            <h2 style="color:red; font-size: x-large;">I think this is Spam!</h2>
+            <h2 style="color:red; font-size: x-large;">{{probaScam}} confident it's a Scam!</h2>
+            <h2>{{probaScam}} confident it's a Scam</h2>
             {% elif prediction == 0%}
-            <h2 style="color:green; font-size: x-large;">I think this is Ham!</h2>
+            <h2 style="color:green; font-size: x-large;">{{probaScam}} confident it's Ham!</h2>
+            <h2>{{probaScam}} confident it's Ham</h2>
             {% endif %}
-            <h2>{{probaScam}} calculated chance it's a Scam</h2>
             <br>
             <br>
             <h4>Erwin Uppal</h4>

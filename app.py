@@ -72,11 +72,23 @@ def predict():
         tfidf_vec = tfidf_model.transform(data["message"])
         tfidf_data = pd.DataFrame(tfidf_vec.toarray())
         my_prediction = model.predict(tfidf_data)
-        probaScam = model.predict_proba(tfidf_data)[:, 1]
-        probaScam = probaScam[0]
-        probaScam = str(probaScam * 100)
-        probaScam = probaScam[:4]
-        probaScam = (probaScam + '%')
+        if my_prediction == 0:
+            probaScam = model.predict_proba(tfidf_data)[:, 0]
+            probaScam = probaScam[0]
+            if (1 - probaScam) >= 0.4:
+                my_prediction = 1
+        if my_prediction == 1:
+            probaScam = model.predict_proba(tfidf_data)[:, 1]
+            probaScam = probaScam[0]
+            probaScam = str(probaScam * 100)
+            probaScam = probaScam[:4]
+            probaScam = (probaScam + '%')
+        else:
+            probaScam = model.predict_proba(tfidf_data)[:, 0]
+            probaScam = probaScam[0]
+            probaScam = str(probaScam * 100)
+            probaScam = probaScam[:4]
+            probaScam = (probaScam + '%')
 
     return render_template('predict.html', prediction=my_prediction, probaScam=probaScam, msg=msg)
 
