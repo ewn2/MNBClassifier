@@ -12,6 +12,7 @@ import sklearn
 warnings.filterwarnings('ignore')
 app = Flask(__name__)
 app.secret_key = 'My_Secret_Key'
+nltk.data.path.append('bin')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -80,8 +81,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    nltk.download('stopwords', quiet=True)
-    nltk.download('punkt', quiet=True)
-    nltk.download('wordnet', quiet=True)
-    nltk.download('omw - 1.4', quiet=True)
+    nltk.data.path.append('bin')
     app.run(debug=True)
