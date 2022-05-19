@@ -25,10 +25,10 @@
             </table>
             {% if prediction == 1%}
             <h2 style="color:red; font-size: x-large;">{{probaScam}} confident it's a Scam!</h2>
-            <h2>{{probaScam}} confident it's a Scam</h2>
+            <br>
             {% elif prediction == 0%}
             <h2 style="color:green; font-size: x-large;">{{probaScam}} confident it's Ham!</h2>
-            <h2>{{probaScam}} confident it's Ham</h2>
+            <br>
             {% endif %}
             <br>
             <br>
