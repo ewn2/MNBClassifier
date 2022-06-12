@@ -19,7 +19,7 @@
                               placeholder="Enter Message text to predict if SPAM or HAM here!" rows="10" cols="50"></textarea>
                     <br>
                     <br>
-                    <input type="submit" class="btn-info" value="Check if the above message is SPAM">
+                    <input type="submit" class="btn-info" value="Test if the above message is likely Spam">
                     <br>
                 </form>
             </div>
@@ -27,14 +27,21 @@
             <div style="text-align: center;">
                 <form action="/finalize2" method="post">
                     <br>
-                    <input type="submit" class="btn-info" value="Give me an example SMS Message for testing">
+                    <input type="submit" class="btn-info" value="Generate an example SMS Message and Test it for Spam">
                     <br>
                     <p>Example messages are not reviewed and may contain profanity,<br>illegitimate links/postal addresses/phone numbers, or other material the user may find unsuitable</p>
                 </form>
             </div>
+            <div style="text-align: center;">
+                <form action="/graphs" method="post">
+                    <br>
+                    <br>
+                    <input type="submit" class="btn-info" value="Show Generated Graphical Breakdown of Data">
+                    <br>
+                </form>
+            </div>
         </div>
         <div style="text-align: center;">
-            <br>
             <br>
             <h4>Erwin Uppal</h4>
             <h5>

@@ -37,6 +37,11 @@ def finalize2():
     return render_template('finalize.html', msg=message)
 
 
+@app.route('/graphs', methods=['GET', 'POST'])
+def graphs():
+    return render_template('graphs.html')
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     model = pickle.load(open('spam_model.pkl', 'rb'))
