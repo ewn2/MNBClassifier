@@ -5,7 +5,6 @@ from flask import Flask, render_template, request, session
 import pickle
 import pandas as pd
 import nltk
-import csvtotable
 from nltk.corpus import stopwords
 import gunicorn
 import sklearn
