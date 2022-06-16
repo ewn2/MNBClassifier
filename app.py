@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, session
 import pickle
 import pandas as pd
 import nltk
+import csvtotable
 from nltk.corpus import stopwords
 import gunicorn
 import sklearn
@@ -40,6 +41,11 @@ def finalize2():
 @app.route('/graphs', methods=['GET', 'POST'])
 def graphs():
     return render_template('graphs.html')
+
+
+@app.route('/datatable', methods=['GET', 'POST'])
+def exploreData():
+    return render_template('datatable.html')
 
 
 @app.route('/predict', methods=['POST'])
