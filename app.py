@@ -1,4 +1,5 @@
 import html
+import json
 import random
 import warnings
 from flask import Flask, render_template, request, session
@@ -10,7 +11,6 @@ import plotly.express as px
 import plotly
 import gunicorn
 import sklearn
-
 
 warnings.filterwarnings('ignore')
 app = Flask(__name__)
@@ -41,11 +41,6 @@ def finalize2():
 
 @app.route('/graphs', methods=['GET', 'POST'])
 def graphs():
-    genGraphs()
-    return render_template('graphs.html')
-
-
-def genGraphs():
     df = pd.read_csv('spam.csv', encoding='latin-1')
     df.drop_duplicates(inplace=True)
     figHist = px.histogram(df, title='Message Category Amounts', x='isSpam', color='isSpam',
@@ -66,15 +61,20 @@ def genGraphs():
         legend_title_font_family='Cambria',
         legend_title_font_color='blue',
     )
-    figHist.show()
+    # figHist.show()
+    fig1JSON = json.dumps(figHist, cls=plotly.utils.PlotlyJSONEncoder)
     figPie = px.pie(df.isSpam.value_counts(), labels='index', values='isSpam', color='isSpam',
                     title='Message % Breakdown',
                     color_discrete_sequence=['#33d1ff', '#ff2727'])
-    figPie.show()
+    # figPie.show()
+    fig2JSON = json.dumps(figPie, cls=plotly.utils.PlotlyJSONEncoder)
     df['length'] = df['text'].apply(len)
     figHistLen = px.histogram(df, x="length", color="isSpam", title='Message Character Length Spread',
                               color_discrete_sequence=["#33d1ff", "#ff2727"])
-    figHistLen.show()
+    # figHistLen.show()
+    fig3JSON = json.dumps(figHistLen, cls=plotly.utils.PlotlyJSONEncoder)
+    header = 'Generated Graphs'
+    return render_template('graphs.html', graphJSON1=fig1JSON, graphJSON2=fig2JSON, graphJSON3=fig3JSON, header=header)
 
 
 @app.route('/datatable', methods=['GET', 'POST'])
