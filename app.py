@@ -6,6 +6,8 @@ import pickle
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
+import plotly.express as px
+import plotly
 import gunicorn
 import sklearn
 
@@ -39,7 +41,40 @@ def finalize2():
 
 @app.route('/graphs', methods=['GET', 'POST'])
 def graphs():
+    genGraphs()
     return render_template('graphs.html')
+
+
+def genGraphs():
+    df = pd.read_csv('spam.csv', encoding='latin-1')
+    df.drop_duplicates(inplace=True)
+    figHist = px.histogram(df, title='Message Category Amounts', x='isSpam', color='isSpam',
+                           color_discrete_sequence=['#33d1ff', '#ff2727'],
+                           labels={
+                               'isSpam': 'Ham vs Spam',
+                           })
+    figHist.update_layout(
+        xaxis=dict(
+            tickmode='array',
+            tickvals=[0, 1],
+            ticktext=['Ham', 'Spam']
+        ),
+        yaxis_title='Instances of Classification',
+        title_font_family='Cambria',
+        title_font_color='gray',
+        font_family='Cambria',
+        legend_title_font_family='Cambria',
+        legend_title_font_color='blue',
+    )
+    figHist.show()
+    figPie = px.pie(df.isSpam.value_counts(), labels='index', values='isSpam', color='isSpam',
+                    title='Message % Breakdown',
+                    color_discrete_sequence=['#33d1ff', '#ff2727'])
+    figPie.show()
+    df['length'] = df['text'].apply(len)
+    figHistLen = px.histogram(df, x="length", color="isSpam", title='Message Character Length Spread',
+                              color_discrete_sequence=["#33d1ff", "#ff2727"])
+    figHistLen.show()
 
 
 @app.route('/datatable', methods=['GET', 'POST'])
