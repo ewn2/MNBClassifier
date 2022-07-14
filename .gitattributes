@@ -1,2 +1,11 @@
 *.html linguist-detectable=false
 *.bib linguist-detectable=false
+*.TeX linguist-detectable=false
+*.pickle linguist-detectable=false
+*.adj linguist-detectable=false
+*.rev linguist-detectable=false
+*.verb linguist-detectable=false
+*.noun linguist-detectable=false
+*.sense linguist-detectable=false
+*.exc linguist-detectable=false
+*.tab linguist-detectable=false
